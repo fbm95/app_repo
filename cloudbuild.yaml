@@ -1,0 +1,24 @@
+timeout: 3600s
+steps:
+- id: Building container image
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA', '.']
+- id: Push container to GCR
+  name: 'eu.gcr.io/cloud-builders/docker'
+  args: ['push', 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA']
+- id: Deploy to CloudRun
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'flask-app'
+  - '--image'
+  - 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA'
+  - '--region'
+  - '$REGION'
+  - '--platform'
+  - 'managed'
+  - '--allow-unauthenticated'
+images:
+- 'gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA'
