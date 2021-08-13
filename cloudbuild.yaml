@@ -16,7 +16,7 @@ steps:
   - '--image'
   - 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA'
   - '--region'
-  - '$REGION'
+  - '${_REGION}'
   - '--platform'
   - 'managed'
   - '--allow-unauthenticated'
