@@ -21,4 +21,4 @@ steps:
   - 'managed'
   - '--allow-unauthenticated'
 images:
-- 'gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA'
+- 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA'
