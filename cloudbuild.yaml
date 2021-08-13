@@ -4,7 +4,7 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA', '.']
 - id: Push container to GCR
-  name: 'eu.gcr.io/cloud-builders/docker'
+  name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA']
 - id: Deploy to CloudRun
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
