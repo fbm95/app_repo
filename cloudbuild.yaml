@@ -1,5 +1,9 @@
 timeout: 3600s
 steps:
+- id: Install dependencies
+  name: python
+  entrypoint: pip
+  args: ["install", "-r", "requirements.txt", "--user"]
 - id: Run PyTest
   name: python
   entrypoint: python
