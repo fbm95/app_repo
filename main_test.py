@@ -12,5 +12,5 @@ def client():
 def test_greetings(client):
     r = client.get("/greetings")
 
-    assert r.data.decode() == "Hello!"
+    assert r.data.decode() == "HHello!"
     assert r.status_code == 200
