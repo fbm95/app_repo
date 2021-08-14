@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, jsonify
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/greetings", methods=['GET'])
 def greetings_controller():
   data = "Hello!"
-  return jsonify(text=data)
+  return data
 
 
 # @app.route('/salutations', methods=['GET'])

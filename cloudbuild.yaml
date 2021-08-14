@@ -1,5 +1,9 @@
 timeout: 3600s
 steps:
+- id: Run PyTest
+  name: python
+  entrypoint: python
+  args: ["-m", "pytest", "--junitxml=${SHORT_SHA}_test_log.xml"] 
 - id: Building container image
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA', '.']
@@ -20,5 +24,10 @@ steps:
   - '--platform'
   - 'managed'
   - '--allow-unauthenticated'
+artifacts:
+  objects:
+    location: gs://${_ARTIFACTS_BUCKET}/
+    paths:
+      - ${SHORT_SHA}_test_log.xml
 images:
 - 'eu.gcr.io/$PROJECT_ID/flask-app:$COMMIT_SHA'
