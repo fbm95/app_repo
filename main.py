@@ -11,10 +11,10 @@ def greetings_controller():
   return data
 
 
-# @app.route('/salutations', methods=['GET'])
-# def salutations_controller():
-#   data = "Salutations!"
-#   return jsonify(text=data)
+@app.route('/salutations', methods=['GET'])
+def salutations_controller():
+  data = "Salutations!"
+  return jsonify(text=data)
 
 
 if __name__ == "__main__":
