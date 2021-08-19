@@ -14,7 +14,7 @@ def greetings_controller():
 @app.route('/salutations', methods=['GET'])
 def salutations_controller():
   data = "Salutations!"
-  return jsonify(text=data)
+  return data
 
 
 if __name__ == "__main__":
